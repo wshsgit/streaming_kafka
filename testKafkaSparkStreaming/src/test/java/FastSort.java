@@ -2,13 +2,21 @@
     public class FastSort{
 
         public static void main(String []args){
+//            System.out.println("Hello World");
+//            int[] a = {12,20,5,16,15,1,30,45,23,8};
+//            int start = 0;
+//            int end = a.length-1;
+//            sort(a,start,end);
+//            for(int i = 0; i<a.length; i++){
+//                System.out.println(a[i]);
+//            }
             System.out.println("Hello World");
             int[] a = {12,20,5,16,15,1,30,45,23,8};
             int start = 0;
             int end = a.length-1;
-            sort(a,start,end);
+            sortTest2(a,start,end);
             for(int i = 0; i<a.length; i++){
-                System.out.println(a[i]);
+                System.out.print(a[i]+",");
             }
 
         }
@@ -42,6 +50,98 @@
             if(start>low) sort(a,low,start-1);//左边序列。第一个索引位置到关键值索引-1
             if(end<high) sort(a,end+1,high);//右边序列。从关键值索引+1到最后一个
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public static void sotrtest(int[] a ,int low,int high  ){
+            int start = low;
+            int end = high;
+            int key = a[low];
+            while (end>start){
+                while (end>start&&a[end]>=key)
+                    end--;
+                if(a[end]<key){
+                    int tmp = a[end];
+                    a[end]=a[start];
+                    a[start]=tmp;
+                }
+                while (end>start&&a[start]<=key)
+                    start++;
+                if(a[start]>key){
+                    int tmp =a[start];
+                    a[start]=a[end];
+                    a[end]= tmp;
+                }
+
+            }
+            if(start>low) sotrtest(a,low,start-1);
+            if(end<high) sotrtest(a,end+1,high);
+        }
+
+
+
+
+
+
+
+        public  static void sortTest2(int[] a,int low, int high){
+            int start = low;
+            int end = high;
+            int key =a[low];
+            while(end>start){
+                while(end>start&&a[start]<key) start++;
+                if(a[start]>key){
+                    int tmp=a[start];
+                    a[start]=a[end];
+                    a[end]=tmp;
+                }
+                while(end>start&&key<a[end])end--;
+                if(key>a[end]){
+                    int tmp=a[end];
+                    a[end]=a[start];
+                    a[start]=tmp;
+                }
+            }
+            if(start>low)sortTest2(a,low,start-1);
+            if(end<high)sortTest2(a,end+1,high);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 
